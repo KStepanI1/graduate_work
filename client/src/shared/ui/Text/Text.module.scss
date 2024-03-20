@@ -1,0 +1,21 @@
+.Text {
+    display: flex;
+    flex-direction: column;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.63;
+    font: inherit;
+}
+
+@media screen and (min-width: 768px) {
+    .Text {
+        gap: 20px;
+    }
+}
+
+.erorr {
+    color: var(--accentAlert);
+}

@@ -1,0 +1,9 @@
+.LoginButton {
+}
+
+.logined {
+    &:hover {
+        color: var(--accentAlert);
+        // background-color: rgb(249, 17, 85);
+    }
+}

@@ -1,0 +1,15 @@
+.AppLink {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+.clear {
+  &:hover {
+    opacity: 1;
+    text-decoration: none;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}

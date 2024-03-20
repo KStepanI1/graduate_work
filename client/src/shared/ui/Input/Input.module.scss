@@ -1,0 +1,26 @@
+.Input {
+    outline: none;
+    border: 1px solid blue;
+    padding: 6px 8px;
+}
+
+.InputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.error {
+    &.Input {
+        border-color: var(--accentAlert);
+    }
+
+    &.InputHint {
+        color: var(--accentAlert);
+    }
+}
+
+.InputHint {
+    font: var(--font-s);
+    color: var(--textSecondary);
+}

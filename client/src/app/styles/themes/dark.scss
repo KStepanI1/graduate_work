@@ -1,0 +1,26 @@
+html[data-theme="dark"] {
+  --primary-color: rgb(10, 132, 255);
+  --secondary-color: rgb(28, 28, 30);
+  --third-color: rgb(242, 242, 247);
+
+  --bg-primary-inverse: rgb(44, 44, 46);
+  --bg-secondary: var(--secondary-color);
+
+  --shadowColor: rgba(255, 255, 255, 0.16);
+  --boxShadow: 0 4px 16px 1px var(--shadowColor);
+
+  --textPrimary: var(--third-color);
+  --textPositive: rgb(50, 215, 75);
+  --textSecondary: #707f8d;
+  --textQuaternary: #96a3ae;
+
+  --yellow: rgb(255, 214, 0);
+  --orange: rgb(255, 159, 0);
+  --accentAlert: rgb(255, 69, 58);
+
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --will-change-btn: color, background-color, opacity;
+
+  --modal-background: rgba(255, 255, 255, 0.2);
+}

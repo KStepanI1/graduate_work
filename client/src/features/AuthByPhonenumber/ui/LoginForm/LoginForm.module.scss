@@ -1,0 +1,12 @@
+.LoginForm {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.submitBtn {
+    margin-top: 16px;
+    font: var(--font-s);
+    text-transform: uppercase;
+}

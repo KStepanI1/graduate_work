@@ -1,0 +1,58 @@
+.Modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: var(--z-index-modal);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background-color: var(--modal-background);
+}
+
+.contentWrapper.left {
+    width: 45%;
+    max-width: 765px;
+    margin-right: 0;
+    margin-left: auto;
+    height: 100vh;
+    background-color: var(--bg-secondary);
+    transform: translate(100%);
+    transition: transform 0.3s;
+}
+
+.contentWrapper.center {
+    min-width: 45vw;
+    max-width: 90vw;
+    margin: 0 auto;
+    background-color: var(--bg-secondary);
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.Modal.opened {
+    pointer-events: all;
+    opacity: 1;
+    .contentWrapper {
+        transform: translate(0);
+    }
+}
+
+.Modal.isClosing {
+    .contentWrapper {
+        transform: translate(100%);
+    }
+}

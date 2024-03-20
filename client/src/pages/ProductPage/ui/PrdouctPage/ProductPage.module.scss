@@ -1,0 +1,49 @@
+.ProductPage {
+  display: grid;
+  grid-template-areas:
+    "GALLERY INFO"
+    "DESC INFO";
+  gap: 40px;
+}
+
+.gallery {
+  grid-area: GALLERY;
+}
+
+.info {
+  grid-area: INFO;
+  position: relative;
+  padding: 24px 40px;
+  width: 480px;
+  height: min-content;
+
+  .infoFooter {
+    display: flex;
+    margin-top: 40px;
+    width: 100%;
+    flex-grow: 1;
+    gap: 16px;
+  }
+
+  .addToCart {
+    width: 100%;
+  }
+
+  .filled {
+    fill: currentColor;
+  }
+
+  .price {
+    margin-top: 8px;
+    font-size: 32px;
+    font-weight: 400;
+  }
+}
+
+.description {
+  grid-area: DESC;
+  padding: 24px;
+
+  // .text {
+  // }
+}

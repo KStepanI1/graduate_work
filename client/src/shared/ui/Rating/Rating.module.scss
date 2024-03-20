@@ -1,0 +1,18 @@
+.Rating {
+    display: flex;
+    align-items: center;
+    color: var(--textSecondary);
+    width: min-content;
+}
+
+.min {
+    gap: 4px;
+    line-height: 18px;
+}
+
+.filled {
+    path {
+        fill: rgba(255, 168, 0, 1);
+        stroke: rgba(255, 168, 0, 1);
+    }
+}

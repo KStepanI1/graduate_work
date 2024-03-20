@@ -1,0 +1,26 @@
+:root {
+  --primary-color: rgb(0, 122, 255);
+  --secondary-color: rgb(28, 28, 30);
+  --third-color: rgb(242, 242, 247);
+
+  --bg-primary-inverse: rgb(229, 229, 234);
+  --bg-secondary: var(--third-color);
+
+  --shadowColor: rgba(0, 26, 52, 0.16);
+  --boxShadow: 0 4px 16px 1px var(--shadowColor);
+
+  --textPrimary: var(--secondary-color);
+  --textPositive: rgb(52, 199, 89);
+  --textSecondary: #707f8d;
+  --textQuaternary: #96a3ae;
+
+  --yellow: rgb(255, 204, 0);
+  --orange: rgb(255, 149, 0);
+  --accentAlert: rgb(255, 59, 48);
+
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --will-change-btn: color, background-color, opacity;
+
+  --modal-background: rgba(0, 0, 0, 0.2);
+}
