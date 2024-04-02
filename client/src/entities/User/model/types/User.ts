@@ -1,19 +1,20 @@
-import { AuthData } from "features/AuthByPhonenumber";
+import { AuthData } from "features/AuthByEmail";
 
 export enum UserRole {
-  USER = "USER",
-  ADMIN = "ADMIN",
+    USER = "USER",
+    ADMIN = "ADMIN",
 }
 
 export interface User {
-  id: string;
-  phoneNumber: string;
-  firstName: string;
-  role: UserRole;
-  basketId: number;
+    id: string;
+    email: string;
+    password: string;
+    firstName: string;
+    role: UserRole;
+    basketId: number;
 }
 
 export interface UserSchema {
-  authData?: AuthData;
-  _mounted: boolean;
+    authData?: AuthData;
+    _mounted: boolean;
 }

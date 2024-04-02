@@ -1,116 +1,97 @@
 import React, { memo, useCallback, useState } from "react";
 import cls from "./ProductCard.module.scss";
 import { generateClassNames } from "shared/lib/generateClassNames/generateClassNames";
-import { ProductSchema } from "entities/Product/model/types/Product";
+import { Product } from "entities/Product/model/types/Product";
 import { GalleryViewer } from "widgets/GalleryViewer";
 import AppLink, { AppLinkTheme } from "shared/ui/AppLink/AppLink";
 import { RoutePath } from "app/providers/router/routeConfig/routeConfig";
 import Button, { ThemeButton } from "shared/ui/Button/Button";
-import { basketApi } from "shared/api/BasketApi";
 import { useAppSelector } from "shared/hooks/useAppSelector/useAppSelector";
 import { getUserId } from "entities/User";
-import { useIntersectionObserver, useLocalStorage } from "@uidotdev/usehooks";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import { CART_LOCALSTORAGE_KEY } from "shared/const/localStorage";
+import { CartProduct, getCart } from "entities/Cart";
+import { useAppDispatch } from "shared/hooks/useAppDispatch/useAppDispatch";
+import { addProductToCart } from "entities/Cart/model/services/addProductToCart";
+import { removeProductFromCart } from "entities/Cart/model/services/removeProductFromCart";
 
 export interface ProductCardProps {
     className?: string;
-    data: ProductSchema;
+    data: Product;
     root?: Element | Document;
     rootMargin?: string;
 }
 
 const ProductCard = (props: ProductCardProps) => {
     const { className, data, root = null, rootMargin = "0px" } = props;
-    const userId = useAppSelector(getUserId);
-    const [isBtnLoading, setIsBtnLoading] = useState(false);
-    const [cartStorage, setCartStorage] = useLocalStorage(
-        CART_LOCALSTORAGE_KEY,
-        JSON.stringify([])
-    );
-    const [isCart, setInCart] = useState(false);
+    const cart = useAppSelector(getCart);
+    const dispatch = useAppDispatch();
 
-    const [ref, entry] = useIntersectionObserver({
-        threshold: 0,
-        root,
-        rootMargin,
-    });
+    const cartData = cart.products?.find((prod) => prod.id === data.id);
+
+    const [isBtnLoading, setIsBtnLoading] = useState(false);
 
     const productLink = `${RoutePath.product}${data.id}`;
 
     const addToCartHandler = useCallback(
         async (productId: number) => {
-            if (userId) {
-                await basketApi
-                    .add(userId, productId)
-                    .then(() => setIsBtnLoading(true))
-                    .finally(() => {
-                        setIsBtnLoading(false);
-                    });
-            } else {
-                setCartStorage((state) =>
-                    JSON.stringify([
-                        ...(JSON.parse(state) as number[]),
-                        productId,
-                    ])
-                );
-            }
+            dispatch(addProductToCart(productId));
         },
-        [setCartStorage, userId]
+        [dispatch]
     );
 
     const removeFromCartHandler = useCallback(
         async (productId: number) => {
-            if (userId) {
-                await basketApi
-                    .add(userId, productId)
-                    .then(() => setIsBtnLoading(true))
-                    .finally(() => {
-                        setIsBtnLoading(false);
-                    });
-            } else {
-                setCartStorage((state) =>
-                    JSON.stringify(
-                        (JSON.parse(state) as number[]).filter(
-                            (id) => id !== productId
-                        )
-                    )
-                );
-            }
+            dispatch(removeProductFromCart(productId));
         },
-        [setCartStorage, userId]
+        [dispatch]
     );
 
     return (
-        <div
-            className={generateClassNames(cls.ProductCard, className)}
-            ref={ref}
-        >
-            {entry?.isIntersecting && (
-                <>
-                    <AppLink theme={AppLinkTheme.CLEAR} to={productLink}>
-                        <GalleryViewer
-                            useStab
-                            data={data.files.map((image) => image.link)}
-                            slideHeight={200}
-                        />
-                    </AppLink>
+        <div className={generateClassNames(cls.ProductCard, className)}>
+            <AppLink theme={AppLinkTheme.CLEAR} to={productLink}>
+                <GalleryViewer
+                    useStab
+                    data={data.media.map((image) => image.link)}
+                    slideHeight={200}
+                />
+            </AppLink>
 
-                    <div>{data.name}</div>
-                    <AppLink
-                        to={productLink}
-                        theme={AppLinkTheme.CLEAR}
-                        className={generateClassNames(cls.description)}
+            <AppLink
+                to={productLink}
+                theme={AppLinkTheme.CLEAR}
+                className={generateClassNames(cls.title)}
+            >
+                {data.title}
+            </AppLink>
+            {cartData?.qty ? (
+                <div className={cls.setting}>
+                    <Button
+                        onClick={() => removeFromCartHandler(data.id)}
+                        showLoader={isBtnLoading}
+                        className={cls.cartBtn}
+                        theme={ThemeButton.SECONDARY}
                     >
-                        {data.description}
-                    </AppLink>
+                        -
+                    </Button>
+                    <span>{cartData.qty}</span>
                     <Button
                         onClick={() => addToCartHandler(data.id)}
                         showLoader={isBtnLoading}
                         className={cls.cartBtn}
+                        theme={ThemeButton.SECONDARY}
                     >
-                        В корзину
+                        +
                     </Button>
-                </>
+                </div>
+            ) : (
+                <Button
+                    onClick={() => addToCartHandler(data.id)}
+                    // showLoader={getCartAmountQuery.isFetching}
+                    className={cls.cartBtn}
+                >
+                    В корзину
+                </Button>
             )}
         </div>
     );

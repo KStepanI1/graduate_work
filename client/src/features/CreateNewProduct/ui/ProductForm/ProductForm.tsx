@@ -37,7 +37,7 @@ const initialReducers: ReducersList = {
 const CreateProductForm = (props: AddProductFormProps) => {
     const { className, productId = 0, onSuccess } = props;
     const dispatch = useAppDispatch();
-    const name = useAppSelector(getCreateProductName);
+    const title = useAppSelector(getCreateProductName);
     const description = useAppSelector(getCreateProductDescription);
     const price = useAppSelector(getCreateProductPrice);
     const info = useAppSelector(getCreateProductInfo);
@@ -53,13 +53,13 @@ const CreateProductForm = (props: AddProductFormProps) => {
                         productActions.setError("Не удалось получить товар")
                     );
 
-                const { name, info, description, price, files } = res.data;
+                const { title, info, description, price, media } = res.data;
 
-                dispatch(productActions.setName(name));
+                dispatch(productActions.setName(title));
                 dispatch(productActions.setDescription(description));
                 dispatch(productActions.setPrice(price));
                 dispatch(productActions.setInfo(info));
-                dispatch(productActions.setMedia(files));
+                dispatch(productActions.setMedia(media));
             }),
     });
 
@@ -106,7 +106,7 @@ const CreateProductForm = (props: AddProductFormProps) => {
 
             const result = await dispatch(
                 createProduct({
-                    name,
+                    title,
                     description,
                     price,
                     info,
@@ -119,7 +119,7 @@ const CreateProductForm = (props: AddProductFormProps) => {
                 onSuccess?.(result.payload);
             }
         },
-        [description, dispatch, files, info, name, onSuccess, price]
+        [description, dispatch, files, info, title, onSuccess, price]
     );
 
     useAppSearchParam({
@@ -136,8 +136,8 @@ const CreateProductForm = (props: AddProductFormProps) => {
             >
                 <Input
                     placeholder="Имя товара"
-                    name="name"
-                    value={name}
+                    name="title"
+                    value={title}
                     onChange={onChangeName}
                 />
                 <textarea

@@ -10,12 +10,12 @@ export interface ProductMedia {
     size: 0;
 }
 
-export interface ProductSchema {
+export interface Product {
     id: number;
-    name: string;
+    title: string;
     description: string;
     price: string;
     rating: number;
     info: ProductInfo[];
-    files: ProductMedia[];
+    media: ProductMedia[];
 }

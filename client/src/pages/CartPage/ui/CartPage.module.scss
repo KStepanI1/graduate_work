@@ -1,0 +1,13 @@
+.CartPage {
+    display: flex;
+    gap: var(--gap);
+    flex-wrap: wrap;
+}
+
+.cartInfo {
+    width: calc(33.333333334% - var(--gap));
+}
+
+.cartItems {
+    width: calc(66.66666667% - var(--gap));
+}

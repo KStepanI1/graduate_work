@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+    height: 290px;
+    justify-content: space-between;
 }
 
-.description {
+.title {
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
@@ -17,5 +19,10 @@
 
 .cartBtn {
     padding: 6px 0;
-    margin-top: 8px;
+}
+
+.setting {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

@@ -3,12 +3,11 @@ import { generateClassNames } from "shared/lib/generateClassNames/generateClassN
 import cls from "./Header.module.scss";
 import { Navbar } from "widgets/Navbar";
 import { ThemeSwitcher } from "../../../Buttons/ui/ThemeSwitcher";
-import { LoginModal } from "features/AuthByPhonenumber";
+import { LoginModal } from "features/AuthByEmail";
 import { logout } from "entities/User/model/services/loguot/logout";
 import { useAppDispatch } from "shared/hooks/useAppDispatch/useAppDispatch";
 import { LoginButton } from "../../../Buttons/ui/LoginButton";
-import { Link } from "react-router-dom";
-import CartButton from "widgets/Buttons/ui/CartButton/CartButton";
+import { CartButton } from "entities/Cart";
 
 export interface HeaderProps {
     className?: string;

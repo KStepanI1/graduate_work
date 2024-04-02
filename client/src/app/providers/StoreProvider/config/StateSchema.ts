@@ -1,13 +1,15 @@
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { UserSchema } from "entities/User";
-import { LoginSchema } from "features/AuthByPhonenumber";
+import { LoginSchema } from "features/AuthByEmail";
 import { createReducerManager } from "./reducerManager";
 import { AxiosInstance } from "axios";
 import { ProductFormSchema } from "features/CreateNewProduct/model/types/ProductFormSchema";
+import { CartSchema } from "entities/Cart";
 // import { NavigateOptions, To } from "react-router-dom";
 
 export interface StateSchema {
     user: UserSchema;
+    cart: CartSchema;
     loginForm?: LoginSchema;
     productForm?: ProductFormSchema;
 }

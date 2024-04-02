@@ -2,7 +2,7 @@ import { $api } from "shared/api/api";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { userActions } from "entities/User";
 import { USER_LOCALSTORAGE_KEY } from "shared/const/localStorage";
-import { AuthData } from "features/AuthByPhonenumber";
+import { AuthData } from "features/AuthByEmail";
 
 export const cehckAuth = createAsyncThunk<
     AuthData,
@@ -22,7 +22,6 @@ export const cehckAuth = createAsyncThunk<
         const { accessToken } = response.data;
 
         localStorage.setItem(USER_LOCALSTORAGE_KEY, accessToken);
-
         dispatch(userActions.setAuthData(response.data));
 
         return response.data;

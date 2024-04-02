@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { UserSchema } from "../types/User";
-import { AuthData } from "features/AuthByPhonenumber";
+import { AuthData } from "features/AuthByEmail";
 
 const initialState: UserSchema = {
     _mounted: false,

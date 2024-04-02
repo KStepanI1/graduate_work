@@ -1,0 +1,58 @@
+.CartInfo {
+    align-items: stretch;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: var(--gap);
+    margin-left: var(--gap);
+    min-width: 0;
+    position: relative;
+}
+
+.cartInfoContent {
+    display: block;
+    position: sticky;
+    background-color: var(--bg-secondary);
+    top: calc(var(--header-height) + 20px);
+}
+
+.section {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section + .section {
+    border-top: 1px solid rgba(204, 214, 228, 0.6);
+}
+
+.orderBtn {
+    background-color: rgba(16, 196, 76, 1);
+    color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    padding: 16px;
+}
+
+.orderHint {
+    color: var(--textSecondary);
+    font-size: 14px;
+    line-height: 18px;
+
+    font-weight: 400;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fieldName {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.fieldValue {
+    font-weight: 700;
+}

@@ -22,6 +22,25 @@ export const createProduct = createAsyncThunk<
         );
 
         const response = await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
+        await productApi.create(formData);
 
         if (!response.data) {
             throw new Error();

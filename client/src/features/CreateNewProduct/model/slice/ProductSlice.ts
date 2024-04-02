@@ -6,7 +6,7 @@ import { createProduct } from "../services/createProduct";
 
 const initialState: ProductFormSchema = {
     isLoading: false,
-    name: "",
+    title: "",
     price: "0",
     description: "",
     info: [],
@@ -19,7 +19,7 @@ export const productSlice = createSlice({
     initialState,
     reducers: {
         setName: (state, action: PayloadAction<string>) => {
-            state.name = action.payload;
+            state.title = action.payload;
         },
         setDescription: (state, action: PayloadAction<string>) => {
             state.description = action.payload;

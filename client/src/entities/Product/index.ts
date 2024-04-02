@@ -1,4 +1,5 @@
 import ProductCard from "./ui/ProductCard/ProductCard";
-import { ProductSchema, ProductInfo } from "./model/types/Product";
+import { Product, ProductInfo } from "./model/types/Product";
+import ProductsBox from "./ui/ProductsBox/ProductsBox";
 
-export { ProductSchema, ProductInfo, ProductCard };
+export { Product, ProductInfo, ProductCard, ProductsBox };

@@ -10,6 +10,7 @@ import { StateSchema, ThunkExtraArg } from "./StateSchema";
 import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import logger from "redux-logger";
+import { cartReducer } from "entities/Cart";
 
 export function createReduxStore(
     initialState?: StateSchema,
@@ -18,6 +19,7 @@ export function createReduxStore(
     const rootReducers: ReducersMapObject<StateSchema> = {
         ...asyncReducers,
         user: userReducer,
+        cart: cartReducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);

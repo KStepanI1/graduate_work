@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper/modules";
 import extensionFromPath from "shared/lib/extensionFromPath/extensionFromPath";
 import { VIDEO_EXTENSIONS } from "shared/const/extensions";
+import Image from "shared/ui/Image/Image";
+import Video from "shared/ui/Video/Video";
 
 export interface GalleryViewerProps {
     data: string[];
@@ -61,7 +63,6 @@ const GalleryViewer = (props: GalleryViewerProps) => {
                         let isVideo = false;
                         if (VIDEO_EXTENSIONS.includes(extension.toLowerCase()))
                             isVideo = true;
-                        const src = `${__SERVER__}${link}`;
                         return (
                             <>
                                 <SwiperSlide
@@ -70,17 +71,16 @@ const GalleryViewer = (props: GalleryViewerProps) => {
                                     style={{ height: slideHeight }}
                                 >
                                     {isVideo ? (
-                                        <video
+                                        <Video
                                             className={cls["swiper-video"]}
-                                            controls
                                             autoPlay
-                                            src={src}
-                                        ></video>
+                                            src={link}
+                                        />
                                     ) : (
-                                        <img
+                                        <Image
                                             className={cls["swiper-image"]}
-                                            src={src}
-                                        ></img>
+                                            src={link}
+                                        ></Image>
                                     )}
                                 </SwiperSlide>
                             </>

@@ -86,14 +86,14 @@ const Modal = memo((props: ModalProps) => {
             >
                 <div
                     className={generateClassNames(cls.overlay)}
-                    onMouseUp={closeHandler}
+                    onMouseDown={closeHandler}
                 >
                     <div
                         className={generateClassNames(
                             cls.contentWrapper,
                             cls[variant]
                         )}
-                        onMouseUp={(e) => e.stopPropagation()}
+                        onMouseDown={(e) => e.stopPropagation()}
                     >
                         <Button onClick={closeHandler}>Закрыть</Button>
                         <div className={generateClassNames(cls.content)}>

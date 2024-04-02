@@ -9,7 +9,7 @@ import { ProductForm } from "features/CreateNewProduct";
 import PageLoader from "widgets/PageLoader/PageLoader";
 import { Table } from "shared/ui/Table";
 import { ColumnDef } from "@tanstack/react-table";
-import { ProductSchema } from "entities/Product";
+import { Product } from "entities/Product";
 import GalleryViewer from "widgets/GalleryViewer/ui/GalleryViewer";
 import Trash24 from "shared/assets/icons/Trash/Trash24.svg";
 import Pencil24 from "shared/assets/icons/Pencil/Pencil24.svg";
@@ -34,13 +34,13 @@ const ProductAdminPage = () => {
     const products = productsQuery?.data?.data;
     const refetch = productsQuery.refetch;
 
-    const columns = useMemo<ColumnDef<ProductSchema>[]>(() => {
+    const columns = useMemo<ColumnDef<Product>[]>(() => {
         return [
             {
                 accessorKey: "files",
                 cell: (cell) => (
                     <GalleryViewer
-                        data={cell.row.original.files.map((file) => file.link)}
+                        data={cell.row.original.media.map((file) => file.link)}
                         slideHeight={100}
                     />
                 ),
@@ -95,7 +95,7 @@ const ProductAdminPage = () => {
                                             .then(() => refetch())
                                             .catch(),
                                     onClose: () => setConfirmDialogConfig(null),
-                                    objectName: `№${cell.row.original.id} ${cell.row.original.name}`,
+                                    objectName: `№${cell.row.original.id} ${cell.row.original.title}`,
                                 })
                             )
                         }
